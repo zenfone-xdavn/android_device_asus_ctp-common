@@ -28,6 +28,10 @@ TARGET_BOARD_PLATFORM := clovertrail
 TARGET_BOOTLOADER_BOARD_NAME := clovertrail
 TARGET_USERIMAGES_USE_EXT4 := true
 
+# Specific headers
+TARGET_DROIDBOOT_LIBS := libintel_droidboot
+TARGET_RELEASETOOL_MAKE_RECOVERY_PATCH_SCRIPT := ./device/asus/ctp-common/make_recovery_patch
+
 # ADB
 BOARD_FUNCTIONFS_HAS_SS_COUNT := true
 
@@ -159,3 +163,6 @@ WIFI_DRIVER_MODULE_ARG      := "iface_name=wlan0 firmware_path=/system/etc/firmw
 
 # Use the non-open-source parts, if they're present
 -include vendor/asus/ctp-common/BoardConfigVendor.mk
+
+# DT2W
+TARGET_TAP_TO_WAKE_NODE := "/sys/devices/pci0000:00/0000:00:00.3/i2c-0/0-0020/input/input1/dclick_mode"
