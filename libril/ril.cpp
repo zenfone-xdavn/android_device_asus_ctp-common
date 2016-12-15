@@ -2298,10 +2298,11 @@ static int responseVoid(Parcel &p, void *response, size_t responselen) {
 
 static void enableNetworkSelectionAutomatic() {
     RLOGI("Localy enabling NETWORK_SELECTION_AUTOMATIC");
+
 #if SIM_COUNT >= 2
 #error "This code only works for single SIM"
 #else
-    issueLocalRequest(RIL_REQUEST_SET_NETWORK_SELECTION_AUTOMATIC, NULL, 0, RIL_SOCKET_1);
+  issueLocalRequest(RIL_REQUEST_SET_NETWORK_SELECTION_AUTOMATIC, NULL, 0, RIL_SOCKET_1);  
 #endif
 }
 
