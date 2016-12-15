@@ -166,3 +166,22 @@ WIFI_DRIVER_MODULE_ARG      := "iface_name=wlan0 firmware_path=/system/etc/firmw
 
 # DT2W
 TARGET_TAP_TO_WAKE_NODE := "/sys/devices/pci0000:00/0000:00:00.3/i2c-0/0-0020/input/input1/dclick_mode"
+
+# OTA Packaging / Bootimg creation
+BOARD_CUSTOM_BOOTIMG := true
+BOARD_CUSTOM_MKBOOTIMG := pack_intel
+BOARD_CUSTOM_BOOTIMG_MK := device/asus/ctp-common/mkbootimg.mk
+DEVICE_BASE_BOOT_IMAGE := device/asus/T00F/base_images/boot.img
+DEVICE_BASE_RECOVERY_IMAGE := device/asus/T00F/base_images/recovery.img
+NEED_KERNEL_MODULE_ROOT := true
+
+# Inline kernel building
+TARGET_KERNEL_SOURCE := kernel/asus/$(TARGET_DEVICE)
+TARGET_KERNEL_ARCH := x86
+BOARD_KERNEL_IMAGE_NAME := bzImage
+TARGET_KERNEL_CONFIG := cyanogenmod_$(TARGET_DEVICE)_defconfig
+
+BOARD_KERNEL_CMDLINE := init=/init pci=noearly loglevel=0 vmalloc=256M androidboot.hardware=redhookbay androidboot.selinux=permissive watchdog.watchdog_thresh=60 androidboot.spid=xxxx:xxxx:xxxx:xxxx:xxxx:xxxx androidboot.serialno=012345678901234567890123456789 snd_pcm.maximum_substreams=8 ip=50.0.0.2:50.0.0.1::255.255.255.0::usb0:on debug_locks=0
+
+TARGET_RECOVERY_UPDATER_LIBS += libintel_updater
+TARGET_RECOVERY_UPDATER_EXTRA_LIBS += liboempartitioning_static
