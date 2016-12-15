@@ -219,5 +219,11 @@ PRODUCT_PACKAGES += \
 
 ADDITIONAL_DEFAULT_PROPERTIES += \
 	ro.debuggable=1
+	
+# Intel_updater
+PRODUCT_PACKAGES += \
+    liboempartitioning_static \
+    libcgpt_static \
+    libintel_updater
 
-$(call inherit-product-if-exists, vendor/asus/ctp-common/ctp-common-vendor.mk)
+$(call inherit-product-if-exists, vendor/asus/T00F/T00F-vendor.mk)
