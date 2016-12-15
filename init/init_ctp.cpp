@@ -105,6 +105,7 @@ static void configure_zram() {
     fclose(f);
 }
 
+
 void vendor_load_properties()
 {
     get_serial();
